@@ -140,6 +140,10 @@ var DateTimePickerTime = onClickOutside( createClass({
 	},
 
 	componentWillReceiveProps: function( nextProps ) {
+		var me = this;		
+		['hours', 'minutes', 'seconds', 'milliseconds'].forEach( function( type ) {
+			assign(me.timeConstraints[ type ], me.props.timeConstraints[ type ]);
+		});
 		this.setState( this.calculateState( nextProps ) );
 	},
 
